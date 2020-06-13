@@ -1,3 +1,4 @@
+//redux tutorial
 const BUY_CAKE = "BUY_CAKE";
 
 //REDUC ACTION CTREATOR should me a function, which return an ACTION as Object
