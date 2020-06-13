@@ -1,12 +1,14 @@
 //REDUX Tutorial
 
 const redux = require("redux");
-const createStore = redux.createStore;
-const combineReducers = redux.combineReducers;
+const createStore = redux.createStore; // need to import createStore to create a STORE
+const combineReducers = redux.combineReducers; // need to import combineReducers to combine multiple REDUCERS
 
 //State of my appliation
-const initialState = {
+const initialCakeState = {
   noOfCakes: 10,
+};
+const initialIceCreamState = {
   noOfIceCreams: 20,
 };
 
@@ -29,13 +31,19 @@ buyIceCream = () => {
 };
 
 // (previousState, action) => newState
-const reducer = (state = initialState, action) => {
+const cakeReducer = (state = initialCakeState, action) => {
   switch (action.type) {
     case BUY_CAKE:
       return {
         ...state,
         noOfCakes: state.noOfCakes - 1,
       };
+    default:
+      return state;
+  }
+};
+const iceCreamReducer = (state = initialIceCreamState, action) => {
+  switch (action.type) {
     case BUY_ICECREAM:
       return {
         ...state,
@@ -46,9 +54,14 @@ const reducer = (state = initialState, action) => {
   }
 };
 
+const rootReducer = combineReducers({
+  cake: cakeReducer,
+  iceCream: iceCreamReducer,
+});
+
 // creating a REDUX STORE with createStore from REDUX library.
 // CreateStore method accepts a parameter. The parameter will be REDUCER, which controlls how the transition will happen.
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 // Once STORE is created, I logged that to console and that is initial state of the STORE
 // Output: Initial State { noOfCakes: 10 }

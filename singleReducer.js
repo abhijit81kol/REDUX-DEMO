@@ -2,16 +2,13 @@
 
 const redux = require("redux");
 const createStore = redux.createStore;
-const combineReducers = redux.combineReducers;
 
 //State of my appliation
 const initialState = {
   noOfCakes: 10,
-  noOfIceCreams: 20,
 };
 
 const BUY_CAKE = "BUY_CAKE"; // creating a TYPE string for ACTION
-const BUY_ICECREAM = "BUY_ICECREAM"; // creating a TYPE string for ACTION
 
 //REDUC ACTION CTREATOR should me a function, which return an ACTION as Object
 //ACTION is an object with TYPE (here, type: BUY_CAKE) property
@@ -19,12 +16,6 @@ buyCake = () => {
   return {
     type: BUY_CAKE,
     info: "First Rexud Action",
-  };
-};
-buyIceCream = () => {
-  return {
-    type: BUY_ICECREAM,
-    info: "Second Rexud Action",
   };
 };
 
@@ -35,11 +26,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         noOfCakes: state.noOfCakes - 1,
-      };
-    case BUY_ICECREAM:
-      return {
-        ...state,
-        noOfIceCreams: state.noOfIceCreams - 1,
       };
     default:
       return state;
@@ -71,9 +57,6 @@ store.dispatch(buyCake());
 
 // Output: Initial State { noOfCakes: 7 }
 store.dispatch(buyCake());
-
-store.dispatch(buyIceCream());
-store.dispatch(buyIceCream());
 
 // At the end I simply UNSUBSCRIBE to any changes in the STORE
 unsubscribe();
