@@ -1,6 +1,8 @@
-//REDUX Tutorial
-
 const redux = require("redux");
+
+// Redux logger is a library which logges all the logs related to REDUX in my application
+const reduxLogger = require("redux-logger");
+
 const createStore = redux.createStore; // need to import createStore to create a STORE
 const combineReducers = redux.combineReducers; // need to import combineReducers to combine multiple REDUCERS
 
